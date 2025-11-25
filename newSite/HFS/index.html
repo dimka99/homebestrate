@@ -60,16 +60,69 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
         
-        .logo i {
-            font-size: 2rem;
+        .logo-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
-        .logo h1 {
+        .logo-house {
+            width: 42px;
+            height: 35px;
+            background: white;
+            position: relative;
+            border-radius: 4px 4px 0 0;
+        }
+        
+        .logo-roof {
+            width: 0;
+            height: 0;
+            border-left: 21px solid transparent;
+            border-right: 21px solid transparent;
+            border-bottom: 15px solid white;
+            position: absolute;
+            top: -15px;
+            left: 0;
+        }
+        
+        .logo-door {
+            width: 10px;
+            height: 15px;
+            background: var(--secondary);
+            position: absolute;
+            bottom: 0;
+            left: 16px;
+            border-radius: 2px 2px 0 0;
+        }
+        
+        .logo-window {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            position: absolute;
+            top: 10px;
+            left: 8px;
+            border-radius: 1px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text h1 {
             font-size: 1.8rem;
             font-weight: 700;
+            line-height: 1;
+        }
+        
+        .logo-text span {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            margin-top: 2px;
         }
         
         nav ul {
@@ -646,6 +699,10 @@
             .lender-actions {
                 flex-direction: column;
             }
+            
+            .logo-text h1 {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -655,8 +712,17 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <i class="fas fa-home"></i>
-                    <h1>MortgageRateHub</h1>
+                    <div class="logo-icon">
+                        <div class="logo-house">
+                            <div class="logo-roof"></div>
+                            <div class="logo-door"></div>
+                            <div class="logo-window"></div>
+                        </div>
+                    </div>
+                    <div class="logo-text">
+                        <h1>MortgageRateHub</h1>
+                        <span>Find Your Perfect Rate</span>
+                    </div>
                 </div>
                 <nav>
                     <ul>
