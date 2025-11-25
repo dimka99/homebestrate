@@ -1,0 +1,10 @@
+homesale-direct-project/
+│
+├── index.html                 (Main website with Stripe & chat)
+├── payment.php               (Stripe backend handler)
+├── success.php              (Payment success page)
+├── config.php               (Configuration file)
+├── webhook.php              (Stripe webhook handler)
+├── composer.json            (PHP dependencies)
+├── .htaccess               (Server configuration)
+└── README.md               (Setup instructions)

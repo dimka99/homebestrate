@@ -1,0 +1,11 @@
+Home Sale Direct Platform Architecture:
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   Frontend      │    │   Backend API    │    │  Third-Party    │
+│   Interface     │◄──►│   Gateway        │◄──►│  Integrations   │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+         │                       │                       │
+         │                       │                       │
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   User          │    │   Database       │    │   Payment       │
+│   Management    │    │   Layer          │    │   Processor     │
+└─────────────────┘    └──────────────────┘    └─────────────────┘

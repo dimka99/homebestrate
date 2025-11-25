@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Best U.S. Home-Loan Deals 2025 – live rates, grants, USDA map</title>
+<style>
+:root{
+  --bg:#f2f5f9;--card:#ffffff;--text:#111827;--accent:#0057b8;--radius:12px;
+  --shadow:0 4px 14px rgba(0,0,0,.06);--font:Inter,system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased}
+header{background:var(--accent);color:#fff;padding:2rem 1rem;text-align:center}
+h1{font-size:1.75rem;font-weight:700;letter-spacing:-.5px}
+main{max-width:1000px;margin:auto;padding:2rem 1rem;display:grid;gap:1.5rem}
+section{background:var(--card);border-radius:var(--radius);padding:1.5rem 2rem;box-shadow:var(--shadow)}
+h2{margin-bottom:.75rem;font-size:1.25rem;font-weight:600}
+label{display:block;margin:.5rem 0 .25rem;font-size:.9rem;font-weight:500}
+input[type=number],input[type=range]{width:100%;max-width:260px}
+input[type=range]{accent-color:var(--accent)}
+.btn{display:inline-block;margin:.75rem .5rem .25rem 0;padding:.6rem 1.4rem;background:var(--accent);color:#fff;border:none;border-radius:6px;font-size:.95rem;cursor:pointer;transition:background .2s}
+.btn:hover{background:#004299}
+table{width:100%;border-collapse:collapse;font-size:.9rem;margin-top:.5rem}
+th,td{padding:.6rem .5rem;text-align:left;border-bottom:1px solid #e5e5e5}
+th{background:var(--bg)}
+#out{font-size:1.1rem;margin-top:.5rem}
+#saved{font-size:.8rem;color:#555;margin-top:.5rem}
+figure{margin-top:1rem;text-align:center}
+figure img{max-width:100%;border-radius:8px;box-shadow:var(--shadow)}
+figcaption{font-size:.75rem;color:#555;margin-top:.25rem}
+@media (max-width:600px){main{padding:1rem}section{padding:1.25rem}}
+</style>
+</head>
+<body>
+<header><h1>Best U.S. Home-Loan Deals 2025</h1></header>
+
+<main>
+  <section>
+    <h2>Today’s 30-yr fixed average</h2>
+    <p><strong>Freddie Mac weekly:</strong> <span id="fmRate">…</span>%</p>
+  </section>
+
+  <section>
+    <h2>Loan types at a glance</h2>
+    <table>
+      <thead><tr><th>Loan type</th><th>Min credit</th><th>Down payment</th><th>30-yr fixed*</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Conventional</td><td>620</td><td>5–20 %</td><td id="cRate">…</td><td>No PMI ≥20 %</td></tr>
+        <tr><td>FHA</td><td>580</td><td>3.5 %</td><td id="fRate">…</td><td>PMI life</td></tr>
+        <tr><td>VA</td><td>620</td><td>0 %</td><td id="vRate">…</td><td>Vets / AD</td></tr>
+        <tr><td>USDA</td><td>640</td><td>0 %</td><td id="uRate">…</td><td>Rural only</td></tr>
+        <tr><td>Foreign nat.</td><td>n/a</td><td>25–30 %</td><td>≈ +0.8 %</td><td>ITIN ok</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.75rem;color:#555">* Relative to live conventional quote.</p>
+  </section>
+
+  <section>
+    <h2>Instant mortgage calculator</h2>
+    <label>Home price $<input id="price" type="number" value="400000" min="0"></label>
+    <label>Down % <input id="down" type="range" min="0" max="40" value="20"><span id="dpVal">20</span>%</label>
+    <label>Rate % <input id="rate" type="number" value="7.2" step="0.01"></label>
+    <button class="btn" onclick="calc()">Calculate</button>
+    <button class="btn" onclick="saveQuote()">Save quote</button>
+    <p id="out">Monthly P&I: <strong>$2 147</strong></p>
+    <div id="saved"></div>
+  </section>
+
+  <section>
+    <h2>USDA eligible areas (0 % down)</h2>
+    <p><a class="btn" href="https://eligibility.sc.egov.usda.gov/" target="_blank" rel="noopener">Open 2025 USDA Map →</a></p>
+    <figure>
+      <img src="https://i.imgur.com/J4hGv4S.png" alt="2025 USDA eligibility preview">
+      <figcaption>Preview: purple = eligible rural area. Click the button above for the live map.</figcaption>
+    </figure>
+    <ul>
+      <li>97 % of U.S. land mass is eligible—many small towns & outer suburbs qualify.</li>
+      <li>Population ≤ 35 000 + not in a major MSA = usually OK.</li>
+      <li>Income limit (1-4 pers.) ≈ $119 850 for 2025; varies by county.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Down-payment help</h2>
+    <ul>
+      <li><b>State HFA</b> – Google “[state] down payment assistance”</li>
+      <li><b>FHLBank</b> – up to $10 k grant (first-time buyers)</li>
+      <li><b>Good Neighbor</b> – 50 % off HUD homes (teachers, cops, firefighters)</li>
+      <li><b>NADL</b> – 0 % down, 2.75 % fixed (Native veterans)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Rate-shopping cheat-sheet</h2>
+    <ol>
+      <li>Score ≥ 740 (utilisation &lt; 10 %, 0 lates)</li>
+      <li>Shop ≥ 3 lenders within 14 days (1 hard pull)</li>
+      <li>Buy points only if staying ≥ 5 y (1 point ≈ –0.25 %)</li>
+      <li>Close mid-month → lower prepaid interest</li>
+      <li>Refi when rate drops ≥ 0.75 %</li>
+    </ol>
+  </section>
+</main>
+
+<script>
+/* ---------- live rate ---------- */
+async function fetchFreddie(){
+  try{
+    const r=await fetch('https://api.allorigins.win/get?url=https://fred.stlouisfed.org/graph/fred/data.csv?id=MORTGAGE30US');
+    const txt=await r.text();
+    const rows=txt.trim().split('\n');
+    const last=rows[rows.length-1];
+    const rate=parseFloat(last.split(',')[1]).toFixed(2);
+    fmRate.textContent=rate;
+    rateInput.value=rate;
+    cRate.textContent=rate+' %';
+    fRate.textContent=(rate-0.3).toFixed(2)+' %';
+    vRate.textContent=(rate-0.6).toFixed(2)+' %';
+    uRate.textContent=(rate-0.4).toFixed(2)+' %';
+    calc();
+  }catch{fmRate.textContent='7.20';}
+}
+fetchFreddie();
+
+/* ---------- calc ---------- */
+const price=document.getElementById('price'), down=document.getElementById('down'), dpVal=document.getElementById('dpVal'), rateInput=document.getElementById('rate'), out=document.getElementById('out'), saved=document.getElementById('saved');
+function calc(){
+  const p=+price.value, d=down.value/100, r=rateInput.value/100/12, n=360, L=p*(1-d), P=L*r/(1-Math.pow(1+r,-n));
+  out.innerHTML='Monthly P&I: <strong>$'+Math.round(P).toLocaleString()+'</strong>';
+}
+down.oninput=_=>{dpVal.textContent=down.value; calc();};
+[price,rateInput].forEach(el=>el.onchange=calc);
+
+/* ---------- save ---------- */
+function saveQuote(){
+  const arr=JSON.parse(localStorage.getItem('quotes')||'[]');
+  arr.unshift({price:price.value, down:down.value, rate:rateInput.value, date:new Date().toLocaleString()});
+  localStorage.setItem('quotes',JSON.stringify(arr.slice(0,3)));
+  show();
+}
+function show(){
+  const arr=JSON.parse(localStorage.getItem('quotes')||'[]');
+  saved.innerHTML=arr.map((x,i)=>`#${i+1} $${x.price} ${x.down}% @${x.rate}% – ${x.date}`).join('<br>');
+}
+show();
+</script>
+</body>
+</html>
