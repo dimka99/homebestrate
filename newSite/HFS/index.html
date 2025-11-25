@@ -1,262 +1,1231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home Best Rates | Cheapest 30-Year Fixed – 2025</title>
-  <meta name="description" content="Lock the lowest U.S. mortgage rate, check USDA 0 % down areas, apply instantly.">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    :root {
-      --primary: #1a365d;
-      --secondary: #2b6cb0;
-      --accent: #e53e3e;
-      --light: #f7fafc;
-      --dark: #2d3748;
-      --text-dark: #2d3748;
-      --text-medium: #4a5568;
-      --text-light: #718096;
-      --success: #38a169;
-      --cyan-accent: #00ddff;
-    }
-    *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.6;color:var(--text-dark);background-color:var(--light);}
-    .container{max-width:1200px;margin:0 auto;padding:0 20px;}
-    header{background-color:rgba(255,255,255,.95);box-shadow:0 2px 10px rgba(0,0,0,.1);position:fixed;width:100%;top:0;z-index:1000;backdrop-filter:blur(10px);}
-    nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 0;}
-    .logo{display:flex;align-items:center;gap:10px;font-size:1.5rem;font-weight:bold;color:var(--primary);}
-    .logo-icon{font-size:1.8rem;color:var(--accent);}
-    .nav-links{display:flex;list-style:none;gap:2rem;}
-    .nav-links a{text-decoration:none;color:var(--text-dark);font-weight:500;transition:color .3s;}
-    .nav-links a:hover{color:var(--secondary);}
-    .cta-button{background-color:var(--accent);color:#fff;padding:.75rem 1.5rem;border-radius:5px;text-decoration:none;font-weight:bold;display:inline-flex;align-items:center;gap:8px;transition:all .3s;border:none;cursor:pointer;font-size:1rem;}
-    .cta-button:hover{background-color:#c53030;transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,.2);}
-    .hero{background:linear-gradient(rgba(26,54,93,.8),rgba(43,108,176,.8)),url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1973&q=80');background-size:cover;background-position:center;color:#fff;padding:180px 0 100px;text-align:center;}
-    .hero h1{font-size:3rem;margin-bottom:1.5rem;text-shadow:1px 1px 3px rgba(0,0,0,.3);}
-    .hero p{font-size:1.25rem;margin-bottom:2.5rem;opacity:.9;max-width:700px;margin-left:auto;margin-right:auto;}
-    section{padding:80px 0;}
-    .section-title{text-align:center;margin-bottom:3rem;}
-    .section-title h2{font-size:2.5rem;color:var(--primary);margin-bottom:1rem;}
-    .section-title p{font-size:1.1rem;color:var(--text-medium);max-width:600px;margin:0 auto;}
-    .glass-card{background:rgba(255,255,255,.15);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:2rem;box-shadow:0 5px 15px rgba(0,0,0,.1);transition:transform .3s;}
-    .glass-card:hover{transform:translateY(-5px);}
-    .btn{background:var(--accent);color:#fff;padding:.75rem 1.5rem;border-radius:5px;font-weight:bold;display:inline-flex;align-items:center;gap:8px;transition:all .3s;border:none;cursor:pointer;font-size:1rem;text-decoration:none;}
-    .btn:hover{background:#c53030;transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,.2);}
-    .fade-up{opacity:0;transform:translateY(30px);transition:all .8s ease}
-    .fade-up.visible{opacity:1;transform:translateY(0)}
-    footer{background:linear-gradient(rgba(26,54,93,.9),rgba(26,54,93,.9)),url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');background-size:cover;background-position:center;color:#fff;padding:3rem 0;text-align:center;}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MortgageRateHub | Compare Rates & Calculate Payments</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #2c5aa0;
+            --secondary: #1e3a8a;
+            --accent: #4f86f7;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f1f5f9;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 2rem;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        nav a:hover {
+            opacity: 0.9;
+        }
+        
+        nav a.active {
+            font-weight: 700;
+        }
+        
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 90, 160, 0.9), rgba(30, 58, 138, 0.9)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .quick-check {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .quick-check select, .quick-check input {
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            min-width: 150px;
+        }
+        
+        .btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background-color: var(--accent);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+        
+        /* Trust Indicators */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .badge i {
+            color: var(--success);
+            font-size: 1.2rem;
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Rates Table */
+        .rates-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        
+        .filters {
+            display: flex;
+            gap: 1rem;
+            padding: 1.5rem;
+            background-color: var(--light);
+            border-bottom: 1px solid var(--light-gray);
+            flex-wrap: wrap;
+        }
+        
+        .filters select {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .rates-table {
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        th {
+            background-color: var(--light);
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        tr:hover {
+            background-color: #f8fafc;
+        }
+        
+        .rate-change.up {
+            color: var(--danger);
+        }
+        
+        .rate-change.down {
+            color: var(--success);
+        }
+        
+        /* Calculator */
+        .calculator-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .calculator-inputs, .calculator-results {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .input-row {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .slider-container {
+            margin-top: 0.5rem;
+        }
+        
+        .slider-value {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+        }
+        
+        .result-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .result-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .breakdown {
+            margin-bottom: 2rem;
+        }
+        
+        .breakdown div {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .chart-container {
+            height: 250px;
+            margin-top: 1rem;
+        }
+        
+        /* Lender Marketplace */
+        .lender-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .lender-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .lender-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .lender-header {
+            padding: 1.5rem;
+            background-color: var(--light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .lender-logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        
+        .lender-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--warning);
+        }
+        
+        .lender-body {
+            padding: 1.5rem;
+        }
+        
+        .lender-features {
+            margin: 1rem 0;
+        }
+        
+        .lender-features div {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .lender-features i {
+            color: var(--success);
+        }
+        
+        .sample-rates {
+            background-color: var(--light);
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .lender-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .lender-actions button {
+            flex: 1;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-column a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+        
+        .disclaimer {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 1rem;
+            margin: 2rem 0;
+            color: #856404;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .calculator-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .quick-check {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .input-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .lender-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
-<!-- ---------- navbar ---------- -->
-<header>
-  <div class="container">
-    <nav>
-      <div class="logo">
-        <i class="fas fa-house-circle-check logo-icon"></i>
-        Home Best Rates
-      </div>
-      <ul class="nav-links">
-        <li><a href="#rates">Live Rates</a></li>
-        <li><a href="#calc">Calculator</a></li>
-        <li><a href="#usda">USDA Map</a></li>
-        <li><a href="#apply">Apply</a></li>
-      </ul>
-      <a href="#apply" class="cta-button"><i class="fas fa-rocket"></i> Apply Now</a>
-    </nav>
-  </div>
-</header>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-home"></i>
+                    <h1>MortgageRateHub</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home" class="active">Home</a></li>
+                        <li><a href="#rates">Current Rates</a></li>
+                        <li><a href="#calculator">Calculator</a></li>
+                        <li><a href="#lenders">Lenders</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
 
-<!-- ---------- hero ---------- -->
-<section class="hero">
-  <div class="container">
-    <h1>Lock the Cheapest 30-Year Fixed</h1>
-    <p>Live Freddie-Mac rates · USDA 0 % down map · Same-day approvals</p>
-    <a href="#rates" class="cta-button"><i class="fas fa-play-circle"></i> Check Rates</a>
-  </div>
-</header>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Find Your Perfect Mortgage Rate</h2>
+            <p>Compare real-time rates from top lenders and calculate your monthly payments</p>
+            
+            <div class="quick-check">
+                <select id="loan-type">
+                    <option>30-Year Fixed</option>
+                    <option>15-Year Fixed</option>
+                    <option>5/1 ARM</option>
+                    <option>7/1 ARM</option>
+                    <option>10/1 ARM</option>
+                </select>
+                <input type="number" placeholder="Credit Score" id="credit-score" min="300" max="850">
+                <input type="number" placeholder="Loan Amount" id="loan-amount">
+                <button class="btn" onclick="showQuickRates()">Check Rates</button>
+            </div>
+        </div>
+    </section>
 
-<!-- ---------- main content ---------- -->
-<main class="container">
-
-  <!-- live rate -->
-  <section id="rates" class="fade-up glass-card">
-    <div class="section-title">
-      <h2>Today’s 30-yr Fixed Average</h2>
-    </div>
-    <p class="text-4xl font-bold text-center text-cyan-300"><span id="fmRate">…</span>%</p>
-  </section>
-
-  <!-- loan table -->
-  <section class="fade-up glass-card">
-    <div class="section-title">
-      <h2>Loan Types at a Glance</h2>
-    </div>
-    <div class="overflow-x-auto">
-      <table class="w-full text-sm">
-        <thead><tr class="border-b border-gray-300"><th>Loan type</th><th>Min credit</th><th>Down payment</th><th>30-yr fixed*</th><th>Notes</th></tr></thead>
-        <tbody>
-          <tr><td>Conventional</td><td>620</td><td>5–20 %</td><td id="cRate">…</td><td>No PMI ≥20 %</td></tr>
-          <tr><td>FHA</td><td>580</td><td>3.5 %</td><td id="fRate">…</td><td>PMI life</td></tr>
-          <tr><td>VA</td><td>620</td><td>0 %</td><td id="vRate">…</td><td>Vets / AD</td></tr>
-          <tr><td>USDA</td><td>640</td><td>0 %</td><td id="uRate">…</td><td>Rural only</td></tr>
-          <tr><td>Foreign nat.</td><td>n/a</td><td>25–30 %</td><td>≈ +0.8 %</td><td>ITIN ok</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="text-xs opacity-70 mt-2">* Relative to live conventional quote.</p>
-  </section>
-
-  <!-- calculator -->
-  <section id="calc" class="fade-up glass-card">
-    <div class="section-title">
-      <h2>Instant Mortgage Calculator</h2>
-    </div>
-    <div class="grid md:grid-cols-3 gap-4 mb-6">
-      <div>
-        <label class="block text-sm font-medium mb-1">Home price $</label>
-        <input id="price" type="number" value="400000" class="w-full px-3 py-2 rounded bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan-300">
-      </div>
-      <div>
-        <label class="block text-sm font-medium mb-1">Down % <span id="dpVal" class="text-cyan-300">20</span>%</label>
-        <input id="down" type="range" min="0" max="40" value="20" class="w-full accent-cyan-300">
-      </div>
-      <div>
-        <label class="block text-sm font-medium mb-1">Rate %</label>
-        <input id="rate" type="number" value="7.2" step="0.01" class="w-full px-3 py-2 rounded bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan-300">
-      </div>
-    </div>
-    <div class="flex flex-wrap gap-3 mb-4">
-      <button class="btn" onclick="calc()"><i class="fas fa-calculator"></i> Calculate</button>
-      <button class="btn" onclick="saveQuote()"><i class="fas fa-save"></i> Save Quote</button>
-    </div>
-    <p id="out" class="text-xl font-semibold mb-2"></p>
-    <div id="saved" class="text-sm opacity-70"></div>
-  </section>
-
-  <!-- usda -->
-  <section id="usda" class="fade-up glass-card">
-    <div class="section-title">
-      <h2>USDA Eligible Areas (0 % Down) – 2025</h2>
-    </div>
-    <a class="btn" href="https://eligibility.sc.egov.usda.gov/" target="_blank" rel="noopener"><i class="fas fa-map"></i> Open Official USDA Map →</a>
-    <form action="https://eligibility.sc.egov.usda.gov/eligibility/welcomeAction.do" method="get" target="_blank" class="mt-4">
-      <label class="block text-sm font-medium mb-1">Check any U.S. address instantly:</label>
-      <input type="text" name="address" placeholder="123 Main St, Anytown, ST" class="w-full max-w-xl px-3 py-2 rounded bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan-300">
-      <button type="submit" class="btn mt-2"><i class="fas fa-search"></i> Check Eligibility</button>
-    </form>
-    <figure class="mt-6">
-      <img src="https://i.imgur.com/J4hGv4S.png" alt="2025 USDA eligibility preview" class="rounded-xl shadow-lg">
-      <figcaption class="text-xs opacity-70 mt-2">Preview: purple = eligible. Click the top button for the full interactive map.</figcaption>
-    </figure>
-    <ul class="list-disc list-inside mt-4 space-y-1">
-      <li><strong>0 % down payment</strong> – 100 % financing.</li>
-      <li>Income limit (1-4 pers.) = <strong>$119 850</strong> for most counties in 2025.</li>
-      <li>Population ≤ 35 000 and **not** in a major MSA = usually OK.</li>
-      <li>Property must be <strong>modest, single-family, primary residence</strong>.</li>
-    </ul>
-  </section>
-
-  <!-- ---------- FIXED: Apply Instantly – icon cards, cyan accent, no red ---------- -->
-  <section id="apply" class="fade-up glass-card">
-    <div class="section-title">
-      <h2>Apply Instantly – Same-Day Decision</h2>
-    </div>
-    <p class="mb-6 text-center">Pre-qualify in 2 minutes, close in as little as 1 business day.</p>
-
-    <div class="grid md:grid-cols-3 gap-6">
-      <!-- Mortgages -->
-      <a href="https://www.usbank.com/home-loans/mortgage/first-time-home-buyers/online-mortgage-application-process.html" target="_blank" rel="noopener" class="group block border border-gray-300 rounded-xl p-5 hover:border-cyan-400 hover:shadow-lg transition-all text-center no-underline">
-        <div class="text-4xl mb-3" style="color:#00ddff;">🏦</div>
-        <h4 class="font-semibold mb-2 text-white group-hover:text-cyan-300">Mortgages</h4>
-        <p class="text-sm text-gray-300">Digital full process, 8-min pre-approval, 3 quotes in 1 form.</p>
-        <span class="inline-block mt-3 text-cyan-300 text-xs font-medium group-hover:underline">Apply Now →</span>
-      </a>
-
-      <!-- Personal / Bridge / Reno -->
-      <a href="https://www.bestegg.com/apply" target="_blank" rel="noopener" class="group block border border-gray-300 rounded-xl p-5 hover:border-cyan-400 hover:shadow-lg transition-all text-center no-underline">
-        <div class="text-4xl mb-3" style="color:#00ddff;">💰</div>
-        <h4 class="font-semibold mb-2 text-white group-hover:text-cyan-300">Personal / Bridge / Reno</h4>
-        <p class="text-sm text-gray-300">Funds in 1-3 days, soft-pull pre-check, 99 % same-day fund.</p>
-        <span class="inline-block mt-3 text-cyan-300 text-xs font-medium group-hover:underline">Apply Now →</span>
-      </a>
-
-      <!-- Credit Unions & Brokers -->
-      <a href="https://www.penfed.org/mortgage" target="_blank" rel="noopener" class="group block border border-gray-300 rounded-xl p-5 hover:border-cyan-400 hover:shadow-lg transition-all text-center no-underline">
-        <div class="text-4xl mb-3" style="color:#00ddff;">🏛️</div>
-        <h4 class="font-semibold mb-2 text-white group-hover:text-cyan-300">Credit Unions & Brokers</h4>
-        <p class="text-sm text-gray-300">Next-day funding, fast-fund list, 3-rate comparison.</p>
-        <span class="inline-block mt-3 text-cyan-300 text-xs font-medium group-hover:underline">Apply Now →</span>
-      </a>
-    </div>
-
-    <ul class="list-disc list-inside mt-6 space-y-1 text-center">
-      <li>Pre-qualification uses a <strong>soft pull</strong> – no impact on credit.</li>
-      <li>Uploaded docs & e-signature = <strong>same-day approval</strong> with most lenders.</li>
-      <li>Funds available <strong>within 1-3 business days</strong> after clear-to-close.</li>
-    </ul>
-  </section>
-
-  <!-- footer -->
-  <footer>
+    <!-- Trust Indicators -->
     <div class="container">
-      <p>&copy; 2025 Home Best Rates – rates update every Thursday · NMLS #1234567</p>
+        <div class="trust-badges">
+            <div class="badge">
+                <i class="fas fa-check-circle"></i>
+                <span>Live Rate Data</span>
+            </div>
+            <div class="badge">
+                <i class="fas fa-check-circle"></i>
+                <span>50+ Lender Partners</span>
+            </div>
+            <div class="badge">
+                <i class="fas fa-check-circle"></i>
+                <span>No Hidden Fees</span>
+            </div>
+            <div class="badge">
+                <i class="fas fa-check-circle"></i>
+                <span>Secure & Private</span>
+            </div>
+        </div>
     </div>
-  </footer>
 
-<!-- ---------- scripts ---------- -->
-<script>
-/* ---------- live rate (JSON endpoint – no NaN) ---------- */
-async function fetchFreddie(){
-  try{
-    const res = await fetch('https://api.mortgagenewsdaily.com/json/30year');
-    const data = await res.json();
-    const rate = parseFloat(data.rate).toFixed(2); // e.g. 6.26
-    fmRate.textContent = rate;
-    rateInput.value = rate;
-    cRate.textContent = rate + ' %';
-    fRate.textContent = (rate - 0.30).toFixed(2) + ' %';
-    vRate.textContent = (rate - 0.60).toFixed(2) + ' %';
-    uRate.textContent = (rate - 0.40).toFixed(2) + ' %';
-    calc();
-  }catch{
-    const rate = '6.26'; // fallback
-    fmRate.textContent = rate;
-    rateInput.value = rate;
-    cRate.textContent = rate + ' %';
-    fRate.textContent = (rate - 0.30).toFixed(2) + ' %';
-    vRate.textContent = (rate - 0.60).toFixed(2) + ' %';
-    uRate.textContent = (rate - 0.40).toFixed(2) + ' %';
-    calc();
-  }
-}
-fetchFreddie();
+    <!-- Current Rates Section -->
+    <section id="rates">
+        <div class="container">
+            <div class="section-title">
+                <h2>Current Mortgage Rates</h2>
+                <p>Compare today's best mortgage rates from our trusted partners</p>
+            </div>
+            
+            <div class="rates-container">
+                <div class="filters">
+                    <select id="state-filter">
+                        <option>All States</option>
+                        <option>California</option>
+                        <option>Texas</option>
+                        <option>Florida</option>
+                        <option>New York</option>
+                    </select>
+                    <select id="credit-score-filter">
+                        <option>All Credit Scores</option>
+                        <option>720+ Excellent</option>
+                        <option>680-719 Good</option>
+                        <option>620-679 Fair</option>
+                    </select>
+                    <select id="loan-type-filter">
+                        <option>All Loan Types</option>
+                        <option>Conventional</option>
+                        <option>FHA</option>
+                        <option>VA</option>
+                        <option>Jumbo</option>
+                    </select>
+                </div>
+                
+                <div class="rates-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Lender</th>
+                                <th>30-Year Fixed</th>
+                                <th>15-Year Fixed</th>
+                                <th>5/1 ARM</th>
+                                <th>APR</th>
+                                <th>Apply Now</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rates-data">
+                            <!-- Rates will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="disclaimer">
+                <p><strong>Important Disclosures:</strong> Rates shown are for informational purposes only. Actual rates may vary based on creditworthiness, loan-to-value ratio, and other factors. We may receive compensation from partner lenders. Not financial advice - consult with qualified professionals. Rates subject to change without notice.</p>
+            </div>
+        </div>
+    </section>
 
-/* ---------- calculator ---------- */
-const price=document.getElementById('price'), down=document.getElementById('down'), dpVal=document.getElementById('dpVal'), rateInput=document.getElementById('rate'), out=document.getElementById('out'), saved=document.getElementById('saved');
-function calc(){
-  const p=+price.value, d=down.value/100, r=rateInput.value/100/12, n=360, L=p*(1-d), P=L*r/(1-Math.pow(1+r,-n));
-  out.innerHTML='Monthly P&I: <strong>$'+Math.round(P).toLocaleString()+'</strong>';
-}
-down.oninput=_=>{dpVal.textContent=down.value; calc();};
-[price,rateInput].forEach(el=>el.onchange=calc);
+    <!-- Calculator Section -->
+    <section id="calculator">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mortgage Calculator</h2>
+                <p>Estimate your monthly payment and see how different factors affect your mortgage</p>
+            </div>
+            
+            <div class="calculator-container">
+                <div class="calculator-inputs">
+                    <div class="input-group">
+                        <label for="home-price">Home Price</label>
+                        <input type="number" id="home-price" value="400000" min="0" step="1000">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="down-payment">Down Payment</label>
+                        <div class="input-row">
+                            <input type="number" id="down-payment" value="80000" min="0" step="1000">
+                            <span id="down-payment-percent">20%</span>
+                        </div>
+                        <div class="slider-container">
+                            <div class="slider-value">
+                                <span>0%</span>
+                                <span id="down-payment-value">20%</span>
+                                <span>100%</span>
+                            </div>
+                            <input type="range" id="down-payment-slider" min="0" max="100" value="20">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="loan-term">Loan Term</label>
+                        <select id="loan-term">
+                            <option value="30">30 years</option>
+                            <option value="20">20 years</option>
+                            <option value="15">15 years</option>
+                            <option value="10">10 years</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="interest-rate">Interest Rate</label>
+                        <input type="number" id="interest-rate" value="6.5" min="0" max="20" step="0.125">
+                        <div class="slider-container">
+                            <div class="slider-value">
+                                <span>0%</span>
+                                <span id="interest-rate-value">6.5%</span>
+                                <span>20%</span>
+                            </div>
+                            <input type="range" id="interest-rate-slider" min="0" max="20" value="6.5" step="0.125">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="property-tax">Property Tax (annual)</label>
+                        <input type="number" id="property-tax" value="4000" min="0" step="100">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="home-insurance">Home Insurance (annual)</label>
+                        <input type="number" id="home-insurance" value="1200" min="0" step="100">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="hoa-fees">HOA Fees (monthly)</label>
+                        <input type="number" id="hoa-fees" value="0" min="0" step="10">
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="calculateMortgage()">Calculate Payment</button>
+                </div>
+                
+                <div class="calculator-results">
+                    <div class="result-card">
+                        <h3>Monthly Payment</h3>
+                        <div class="amount" id="monthly-payment">$2,528</div>
+                    </div>
+                    
+                    <div class="breakdown">
+                        <h4>Payment Breakdown</h4>
+                        <div>
+                            <span>Principal & Interest:</span>
+                            <span id="principal-interest">$2,028</span>
+                        </div>
+                        <div>
+                            <span>Property Tax:</span>
+                            <span id="tax-amount">$333</span>
+                        </div>
+                        <div>
+                            <span>Home Insurance:</span>
+                            <span id="insurance-amount">$100</span>
+                        </div>
+                        <div>
+                            <span>HOA Fees:</span>
+                            <span id="hoa-amount">$0</span>
+                        </div>
+                        <div style="font-weight: 600; border-top: 1px solid var(--dark); padding-top: 0.5rem;">
+                            <span>Total Monthly Payment:</span>
+                            <span id="total-monthly">$2,528</span>
+                        </div>
+                    </div>
+                    
+                    <div class="amortization-chart">
+                        <h4>Payment Over Time</h4>
+                        <div class="chart-container">
+                            <canvas id="amortizationChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-/* ---------- save quote ---------- */
-function saveQuote(){
-  const arr=JSON.parse(localStorage.getItem('quotes')||'[]');
-  arr.unshift({price:price.value, down:down.value, rate:rateInput.value, date:new Date().toLocaleString()});
-  localStorage.setItem('quotes',JSON.stringify(arr.slice(0,3)));
-  show();
-}
-function show(){
-  const arr=JSON.parse(localStorage.getItem('quotes')||'[]');
-  saved.innerHTML=arr.map((x,i)=>`#${i+1} $${x.price} ${x.down}% @${x.rate}% – ${x.date}`).join('<br>');
-}
-show();
+    <!-- Lender Marketplace Section -->
+    <section id="lenders">
+        <div class="container">
+            <div class="section-title">
+                <h2>Top Mortgage Lenders</h2>
+                <p>Compare our trusted lending partners and find the best option for your needs</p>
+            </div>
+            
+            <div class="lender-grid">
+                <!-- Lender 1 -->
+                <div class="lender-card">
+                    <div class="lender-header">
+                        <div class="lender-logo">Better Mortgage</div>
+                        <div class="lender-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.8/5</span>
+                        </div>
+                    </div>
+                    <div class="lender-body">
+                        <div class="lender-features">
+                            <div><i class="fas fa-check"></i> Online Application</div>
+                            <div><i class="fas fa-check"></i> Rate Match Guarantee</div>
+                            <div><i class="fas fa-check"></i> 30-Day Closing</div>
+                        </div>
+                        <div class="sample-rates">
+                            <strong>30-Yr Fixed: 6.25%</strong>
+                        </div>
+                        <div class="lender-actions">
+                            <button class="btn btn-secondary">View Details</button>
+                            <button class="btn btn-primary" onclick="redirectToLender('better')">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Lender 2 -->
+                <div class="lender-card">
+                    <div class="lender-header">
+                        <div class="lender-logo">Rocket Mortgage</div>
+                        <div class="lender-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.7/5</span>
+                        </div>
+                    </div>
+                    <div class="lender-body">
+                        <div class="lender-features">
+                            <div><i class="fas fa-check"></i> Fully Digital Process</div>
+                            <div><i class="fas fa-check"></i> Customized Options</div>
+                            <div><i class="fas fa-check"></i> 24/7 Support</div>
+                        </div>
+                        <div class="sample-rates">
+                            <strong>30-Yr Fixed: 6.35%</strong>
+                        </div>
+                        <div class="lender-actions">
+                            <button class="btn btn-secondary">View Details</button>
+                            <button class="btn btn-primary" onclick="redirectToLender('rocket')">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Lender 3 -->
+                <div class="lender-card">
+                    <div class="lender-header">
+                        <div class="lender-logo">LoanDepot</div>
+                        <div class="lender-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.6/5</span>
+                        </div>
+                    </div>
+                    <div class="lender-body">
+                        <div class="lender-features">
+                            <div><i class="fas fa-check"></i> Low Rate Guarantee</div>
+                            <div><i class="fas fa-check"></i> Zero Lender Fees</div>
+                            <div><i class="fas fa-check"></i> Fast Pre-Approval</div>
+                        </div>
+                        <div class="sample-rates">
+                            <strong>30-Yr Fixed: 6.29%</strong>
+                        </div>
+                        <div class="lender-actions">
+                            <button class="btn btn-secondary">View Details</button>
+                            <button class="btn btn-primary" onclick="redirectToLender('loandepot')">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-/* ---------- scroll fade ---------- */
-const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})}, {threshold:.15});
-document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
-</script>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MortgageRateHub</h3>
+                    <p>Your trusted source for comparing mortgage rates and finding the best loan options for your home purchase or refinance.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#rates">Current Rates</a></li>
+                        <li><a href="#calculator">Mortgage Calculator</a></li>
+                        <li><a href="#lenders">Lender Marketplace</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Loan Types</h3>
+                    <ul>
+                        <li><a href="#">30-Year Fixed</a></li>
+                        <li><a href="#">15-Year Fixed</a></li>
+                        <li><a href="#">Adjustable Rate</a></li>
+                        <li><a href="#">FHA Loans</a></li>
+                        <li><a href="#">VA Loans</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@mortgageratehub.com</li>
+                        <li><i class="fas fa-phone"></i> (800) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Finance St, New York, NY</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 MortgageRateHub. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample rate data
+        const rateData = [
+            {
+                lender: "Better Mortgage",
+                rates: {
+                    "30-year-fixed": 6.25,
+                    "15-year-fixed": 5.75,
+                    "5-1-arm": 5.95
+                },
+                apr: 6.45,
+                features: ["online-application", "rate-lock", "fast-closing"],
+                apply_url: "https://better.com/apply?partner=mortgageratehub"
+            },
+            {
+                lender: "Rocket Mortgage",
+                rates: {
+                    "30-year-fixed": 6.35,
+                    "15-year-fixed": 5.85,
+                    "5-1-arm": 6.05
+                },
+                apr: 6.55,
+                features: ["digital-process", "custom-options", "24-7-support"],
+                apply_url: "https://rocketmortgage.com/apply?partner=mortgageratehub"
+            },
+            {
+                lender: "LoanDepot",
+                rates: {
+                    "30-year-fixed": 6.29,
+                    "15-year-fixed": 5.79,
+                    "5-1-arm": 5.99
+                },
+                apr: 6.49,
+                features: ["low-rate-guarantee", "zero-fees", "fast-approval"],
+                apply_url: "https://loandepot.com/apply?partner=mortgageratehub"
+            },
+            {
+                lender: "Wells Fargo",
+                rates: {
+                    "30-year-fixed": 6.45,
+                    "15-year-fixed": 5.95,
+                    "5-1-arm": 6.15
+                },
+                apr: 6.65,
+                features: ["branch-network", "relationship-discounts", "jumbo-loans"],
+                apply_url: "https://wellsfargo.com/mortgage/apply?partner=mortgageratehub"
+            },
+            {
+                lender: "Chase Bank",
+                rates: {
+                    "30-year-fixed": 6.40,
+                    "15-year-fixed": 5.90,
+                    "5-1-arm": 6.10
+                },
+                apr: 6.60,
+                features: ["dreaam-program", "low-down-payment", "rate-discounts"],
+                apply_url: "https://chase.com/mortgage/apply?partner=mortgageratehub"
+            }
+        ];
+
+        // Initialize rates table
+        document.addEventListener('DOMContentLoaded', function() {
+            populateRatesTable();
+            calculateMortgage();
+            setupEventListeners();
+        });
+
+        // Populate rates table with data
+        function populateRatesTable() {
+            const tableBody = document.getElementById('rates-data');
+            tableBody.innerHTML = '';
+            
+            rateData.forEach(lender => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${lender.lender}</td>
+                    <td>${lender.rates['30-year-fixed']}%</td>
+                    <td>${lender.rates['15-year-fixed']}%</td>
+                    <td>${lender.rates['5-1-arm']}%</td>
+                    <td>${lender.apr}%</td>
+                    <td><button class="btn btn-primary" onclick="redirectToLender('${lender.lender.toLowerCase().replace(' ', '')}')">Apply Now</button></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Mortgage calculation function
+        function calculateMortgage() {
+            const homePrice = parseFloat(document.getElementById('home-price').value) || 0;
+            const downPayment = parseFloat(document.getElementById('down-payment').value) || 0;
+            const loanTerm = parseInt(document.getElementById('loan-term').value) || 30;
+            const interestRate = parseFloat(document.getElementById('interest-rate').value) || 0;
+            const propertyTax = parseFloat(document.getElementById('property-tax').value) || 0;
+            const homeInsurance = parseFloat(document.getElementById('home-insurance').value) || 0;
+            const hoaFees = parseFloat(document.getElementById('hoa-fees').value) || 0;
+            
+            const loanAmount = homePrice - downPayment;
+            const monthlyRate = interestRate / 100 / 12;
+            const payments = loanTerm * 12;
+            
+            // Monthly Principal & Interest
+            let monthlyPI = 0;
+            if (monthlyRate > 0) {
+                monthlyPI = loanAmount * 
+                    (monthlyRate * Math.pow(1 + monthlyRate, payments)) / 
+                    (Math.pow(1 + monthlyRate, payments) - 1);
+            } else {
+                monthlyPI = loanAmount / payments;
+            }
+            
+            // Total Monthly Payment
+            const monthlyPayment = monthlyPI + 
+                (propertyTax / 12) + 
+                (homeInsurance / 12) + 
+                hoaFees;
+            
+            // Update UI
+            document.getElementById('monthly-payment').textContent = `$${monthlyPayment.toFixed(0)}`;
+            document.getElementById('principal-interest').textContent = `$${monthlyPI.toFixed(0)}`;
+            document.getElementById('tax-amount').textContent = `$${(propertyTax / 12).toFixed(0)}`;
+            document.getElementById('insurance-amount').textContent = `$${(homeInsurance / 12).toFixed(0)}`;
+            document.getElementById('hoa-amount').textContent = `$${hoaFees.toFixed(0)}`;
+            document.getElementById('total-monthly').textContent = `$${monthlyPayment.toFixed(0)}`;
+            
+            updateAmortizationChart(loanAmount, interestRate, loanTerm);
+        }
+
+        // Update amortization chart
+        function updateAmortizationChart(loanAmount, interestRate, loanTerm) {
+            const ctx = document.getElementById('amortizationChart').getContext('2d');
+            
+            // Calculate data for the chart
+            const years = [];
+            const principalData = [];
+            const interestData = [];
+            
+            const monthlyRate = interestRate / 100 / 12;
+            const payments = loanTerm * 12;
+            let balance = loanAmount;
+            
+            for (let year = 1; year <= loanTerm; year++) {
+                let principalPaid = 0;
+                let interestPaid = 0;
+                
+                for (let month = 1; month <= 12; month++) {
+                    const interestPayment = balance * monthlyRate;
+                    const principalPayment = (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, payments)) / 
+                                            (Math.pow(1 + monthlyRate, payments) - 1) - interestPayment;
+                    
+                    principalPaid += principalPayment;
+                    interestPaid += interestPayment;
+                    balance -= principalPayment;
+                }
+                
+                years.push(`Year ${year}`);
+                principalData.push(principalPaid);
+                interestData.push(interestPaid);
+            }
+            
+            // Create or update chart
+            if (window.amortizationChartInstance) {
+                window.amortizationChartInstance.destroy();
+            }
+            
+            window.amortizationChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: years,
+                    datasets: [
+                        {
+                            label: 'Principal',
+                            data: principalData,
+                            backgroundColor: '#4f86f7'
+                        },
+                        {
+                            label: 'Interest',
+                            data: interestData,
+                            backgroundColor: '#ff6b6b'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            stacked: true
+                        },
+                        y: {
+                            stacked: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Setup event listeners for sliders and inputs
+        function setupEventListeners() {
+            // Down payment slider
+            const downPaymentSlider = document.getElementById('down-payment-slider');
+            const downPaymentInput = document.getElementById('down-payment');
+            const downPaymentPercent = document.getElementById('down-payment-percent');
+            const downPaymentValue = document.getElementById('down-payment-value');
+            const homePriceInput = document.getElementById('home-price');
+            
+            downPaymentSlider.addEventListener('input', function() {
+                const percent = parseInt(this.value);
+                const homePrice = parseFloat(homePriceInput.value) || 0;
+                const downPayment = (homePrice * percent) / 100;
+                
+                downPaymentInput.value = downPayment.toFixed(0);
+                downPaymentPercent.textContent = `${percent}%`;
+                downPaymentValue.textContent = `${percent}%`;
+                
+                calculateMortgage();
+            });
+            
+            downPaymentInput.addEventListener('input', function() {
+                const homePrice = parseFloat(homePriceInput.value) || 0;
+                const downPayment = parseFloat(this.value) || 0;
+                const percent = Math.min(100, (downPayment / homePrice) * 100);
+                
+                downPaymentSlider.value = percent;
+                downPaymentPercent.textContent = `${percent.toFixed(0)}%`;
+                downPaymentValue.textContent = `${percent.toFixed(0)}%`;
+                
+                calculateMortgage();
+            });
+            
+            homePriceInput.addEventListener('input', function() {
+                const homePrice = parseFloat(this.value) || 0;
+                const percent = parseInt(downPaymentSlider.value);
+                const downPayment = (homePrice * percent) / 100;
+                
+                downPaymentInput.value = downPayment.toFixed(0);
+                calculateMortgage();
+            });
+            
+            // Interest rate slider
+            const interestRateSlider = document.getElementById('interest-rate-slider');
+            const interestRateInput = document.getElementById('interest-rate');
+            const interestRateValue = document.getElementById('interest-rate-value');
+            
+            interestRateSlider.addEventListener('input', function() {
+                const rate = parseFloat(this.value);
+                interestRateInput.value = rate;
+                interestRateValue.textContent = `${rate}%`;
+                calculateMortgage();
+            });
+            
+            interestRateInput.addEventListener('input', function() {
+                const rate = parseFloat(this.value) || 0;
+                interestRateSlider.value = rate;
+                interestRateValue.textContent = `${rate}%`;
+                calculateMortgage();
+            });
+            
+            // Other inputs that affect calculation
+            document.getElementById('loan-term').addEventListener('change', calculateMortgage);
+            document.getElementById('property-tax').addEventListener('input', calculateMortgage);
+            document.getElementById('home-insurance').addEventListener('input', calculateMortgage);
+            document.getElementById('hoa-fees').addEventListener('input', calculateMortgage);
+        }
+
+        // Show quick rates based on user input
+        function showQuickRates() {
+            const loanType = document.getElementById('loan-type').value;
+            const creditScore = document.getElementById('credit-score').value;
+            const loanAmount = document.getElementById('loan-amount').value;
+            
+            alert(`Showing rates for:\nLoan Type: ${loanType}\nCredit Score: ${creditScore || 'Not specified'}\nLoan Amount: ${loanAmount ? '$' + loanAmount : 'Not specified'}`);
+            
+            // Scroll to rates section
+            document.getElementById('rates').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Redirect to lender application
+        function redirectToLender(lender) {
+            // In a real implementation, this would redirect to the actual lender application page
+            // with proper affiliate tracking
+            alert(`Redirecting to ${lender} application...\n\nIn a real implementation, this would take you to the lender's website.`);
+            
+            // Example of actual redirect (commented out for this demo)
+            // window.location.href = `https://${lender}.com/apply?partner=mortgageratehub`;
+        }
+    </script>
 </body>
 </html>
