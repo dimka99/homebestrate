@@ -3,172 +3,152 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Home Best Rates | Cheapest 30-Yr Fixed – 2025</title>
-  <meta name="description" content="Lock the lowest U.S. mortgage rate, check USDA 0 % down areas, apply instantly. Live support.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏦</text></svg>">
+  <title>Home Best Rates | Ultra-Modern Mortgage Hub</title>
+  <meta name="description" content="Lock the cheapest 30-year fixed, check USDA 0 % down areas, apply instantly.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
   <style>
-    :root{
-      --bg:#fafbfc;--card:#ffffff;--text:#1a1a1a;--accent:#0052cc;--radius:12px;--shadow:0 4px 24px rgba(0,0,0,.06);
-      --font:'Inter',system-ui,sans-serif;--glow:0 0 8px var(--accent);
-    }
-    @media (prefers-color-scheme:dark){
-      :root{--bg:#0b0f15;--card:#12161d;--text:#f2f4f7;--shadow:0 4px 24px rgba(0,0,0,.35);}
-    }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased}
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.75rem 2rem;background:rgba(255,255,255,.75);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,.08)}
-    @media (prefers-color-scheme:dark){nav{background:rgba(18,22,29,.75);border-color:rgba(255,255,255,.08)}}
-    .logo{font-size:1.25rem;font-weight:700;color:var(--accent);letter-spacing:-.5px}
-    nav a{background:var(--accent);color:#fff;padding:.45rem 1.1rem;border-radius:var(--radius);font-weight:600;text-decoration:none;transition:.2s}
-    nav a:hover{filter:brightness(1.15)}
-    .hero{padding:8rem 1rem 4rem;text-align:center;background:linear-gradient(135deg,#0061ff 0%,#00c6ff 100%);color:#fff}
-    .hero h1{font-size:2.5rem;font-weight:800;margin-bottom:.5rem;letter-spacing:-.5px}
-    .hero p{font-size:1.1rem;opacity:.9}
-    main{max-width:1000px;margin:auto;padding:3rem 1rem;display:grid;gap:2.5rem}
-    .card{background:var(--card);border-radius:var(--radius);padding:2rem;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,.05);animation:fade .8s ease}
-    @keyframes fade{from{opacity:0;transform:translateY(10px)}}
-    .card h3{margin-bottom:1rem;font-size:1.25rem;font-weight:600;display:flex;align-items:center;gap:.5rem}
-    .card h3::before{content:"";width:4px;height:20px;background:var(--accent);border-radius:2px}
-    table{width:100%;border-collapse:collapse;font-size:.9rem;margin-top:.5rem}
-    th,td{padding:.6rem .5rem;text-align:left;border-bottom:1px solid rgba(0,0,0,.08)}
-    label{display:block;margin:.6rem 0 .25rem;font-size:.9rem;font-weight:500}
-    input[type=number],input[type=range]{width:100%;max-width:280px}
-    input[type=range]{accent-color:var(--accent)}
-    .btn{display:inline-block;margin:.75rem .5rem .25rem 0;padding:.65rem 1.5rem;background:var(--accent);color:#fff;border:none;border-radius:var(--radius);font-size:1rem;font-weight:600;cursor:pointer;transition:.2s;box-shadow:var(--glow)}
-    .btn:hover{filter:brightness(1.15)}
-    #out{margin-top:1rem;font-size:1.1rem}
-    #saved{font-size:.8rem;opacity:.7;margin-top:.5rem}
-    figure{margin:1.5rem 0 1rem;text-align:center}
-    figure img{max-width:100%;border-radius:var(--radius);box-shadow:var(--shadow)}
-    figcaption{font-size:.8rem;opacity:.7;margin-top:.25rem}
-    .apply-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:1rem}
-    .apply-block{border:1px solid rgba(0,0,0,.1);border-radius:var(--radius);padding:1rem}
-    .apply-block h4{margin-bottom:.75rem;font-size:1rem;font-weight:600}
-    footer{text-align:center;padding:2rem 1rem;font-size:.85rem;opacity:.6}
-    @media (max-width:600px){.hero h1{font-size:2rem}nav{padding:1rem}}
+    /* animated gradient hero */
+    .animated-bg{ background:linear-gradient(-45deg,#0061ff,#00c6ff,#0061ff,#00c6ff);background-size:400% 400%;animation:gradient 15s ease infinite;}
+    @keyframes gradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+    /* glass card */
+    .glass{background:rgba(255,255,255,.15);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);}
+    /* scroll fade */
+    .fade-up{opacity:0;transform:translateY(30px);transition:all .8s ease}
+    .fade-up.visible{opacity:1;transform:translateY(0)}
   </style>
 </head>
-<body>
-<!-- ---------- glass navbar ---------- -->
-<nav>
-  <div class="logo">Home Best Rates</div>
-  <a href="#calc">Check My Rate</a>
+<body class="bg-gray-900 text-white">
+
+<!-- ---------- navbar ---------- -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-gray-900/70 backdrop-blur-lg border-b border-gray-700">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <div class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Home Best Rates</div>
+      <a href="#calc" class="ml-4 px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-lg text-sm font-semibold hover:opacity-90 transition">Check My Rate</a>
+    </div>
+  </div>
 </nav>
 
 <!-- ---------- hero ---------- -->
-<header class="hero">
-  <h1>Lock the Cheapest 30-Year Fixed</h1>
-  <p>Live Freddie-Mac rates · USDA 0 % down map · Same-day approvals</p>
-  <a class="btn" href="#apply">Apply Instantly</a>
+<header class="animated-bg min-h-screen flex items-center justify-center px-4">
+  <div class="text-center glass rounded-2xl p-8 md:p-12 max-w-3xl">
+    <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Lock the Cheapest 30-Year Fixed</h1>
+    <p class="text-lg md:text-xl mb-6">Live Freddie-Mac rates · USDA 0 % down map · Same-day approvals</p>
+    <a href="#apply" class="inline-block px-6 py-3 rounded-lg bg-white text-gray-900 font-semibold hover:bg-opacity-90 transition">Apply Instantly</a>
+  </div>
 </header>
 
-<!-- ---------- main ---------- -->
-<main>
+<!-- ---------- main content ---------- -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid gap-12">
+
   <!-- live rate -->
-  <div class="card">
-    <h3>Today’s 30-yr Fixed Average</h3>
-    <p><strong>Freddie Mac weekly:</strong> <span id="fmRate">…</span>%</p>
-  </div>
+  <section class="fade-up glass rounded-2xl p-6 md:p-8">
+    <h2 class="text-2xl font-bold mb-4">Today’s 30-yr Fixed Average</h2>
+    <p class="text-3xl font-semibold"><span id="fmRate" class="text-cyan-300">…</span>%</p>
+  </section>
 
   <!-- loan table -->
-  <div class="card">
-    <h3>Loan Types at a Glance</h3>
-    <table>
-      <thead><tr><th>Loan type</th><th>Min credit</th><th>Down payment</th><th>30-yr fixed*</th><th>Notes</th></tr></thead>
-      <tbody>
-        <tr><td>Conventional</td><td>620</td><td>5–20 %</td><td id="cRate">…</td><td>No PMI ≥20 %</td></tr>
-        <tr><td>FHA</td><td>580</td><td>3.5 %</td><td id="fRate">…</td><td>PMI life</td></tr>
-        <tr><td>VA</td><td>620</td><td>0 %</td><td id="vRate">…</td><td>Vets / AD</td></tr>
-        <tr><td>USDA</td><td>640</td><td>0 %</td><td id="uRate">…</td><td>Rural only</td></tr>
-        <tr><td>Foreign nat.</td><td>n/a</td><td>25–30 %</td><td>≈ +0.8 %</td><td>ITIN ok</td></tr>
-      </tbody>
-    </table>
-    <p style="font-size:.75rem;opacity:.7">* Relative to live conventional quote.</p>
-  </div>
+  <section class="fade-up glass rounded-2xl p-6 md:p-8">
+    <h2 class="text-2xl font-bold mb-4">Loan Types at a Glance</h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead><tr class="border-b border-gray-600"><th>Loan type</th><th>Min credit</th><th>Down payment</th><th>30-yr fixed*</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Conventional</td><td>620</td><td>5–20 %</td><td id="cRate">…</td><td>No PMI ≥20 %</td></tr>
+          <tr><td>FHA</td><td>580</td><td>3.5 %</td><td id="fRate">…</td><td>PMI life</td></tr>
+          <tr><td>VA</td><td>620</td><td>0 %</td><td id="vRate">…</td><td>Vets / AD</td></tr>
+          <tr><td>USDA</td><td>640</td><td>0 %</td><td id="uRate">…</td><td>Rural only</td></tr>
+          <tr><td>Foreign nat.</td><td>n/a</td><td>25–30 %</td><td>≈ +0.8 %</td><td>ITIN ok</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-xs opacity-70 mt-2">* Relative to live conventional quote.</p>
+  </section>
 
   <!-- calculator -->
-  <div class="card" id="calc">
-    <h3>Instant Mortgage Calculator</h3>
-    <label>Home price $<input id="price" type="number" value="400000" min="0"></label>
-    <label>Down % <input id="down" type="range" min="0" max="40" value="20"><span id="dpVal">20</span>%</label>
-    <label>Rate % <input id="rate" type="number" value="7.2" step="0.01"></label>
-    <button class="btn" onclick="calc()">Calculate</button>
-    <button class="btn" onclick="saveQuote()">Save quote</button>
-    <p id="out">Monthly P&I: <strong>$2 147</strong></p>
-    <div id="saved"></div>
-  </div>
+  <section id="calc" class="fade-up glass rounded-2xl p-6 md:p-8">
+    <h2 class="text-2xl font-bold mb-4">Instant Mortgage Calculator</h2>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm font-medium mb-1">Home price $</label>
+        <input id="price" type="number" value="400000" class="w-full px-3 py-2 rounded bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-300">
+      </div>
+      <div>
+        <label class="block text-sm font-medium mb-1">Down % <span id="dpVal" class="text-cyan-300">20</span>%</label>
+        <input id="down" type="range" min="0" max="40" value="20" class="w-full accent-cyan-300">
+      </div>
+      <div>
+        <label class="block text-sm font-medium mb-1">Rate %</label>
+        <input id="rate" type="number" value="7.2" step="0.01" class="w-full px-3 py-2 rounded bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-300">
+      </div>
+    </div>
+    <div class="mt-4 flex flex-wrap gap-3">
+      <button class="btn" onclick="calc()">Calculate</button>
+      <button class="btn" onclick="saveQuote()">Save Quote</button>
+    </div>
+    <p id="out" class="mt-4 text-xl font-semibold"></p>
+    <div id="saved" class="mt-2 text-sm opacity-70"></div>
+  </section>
 
   <!-- usda -->
-  <div class="card">
-    <h3>USDA Eligible Areas (0 % Down) – 2025</h3>
+  <section class="fade-up glass rounded-2xl p-6 md:p-8">
+    <h2 class="text-2xl font-bold mb-4">USDA Eligible Areas (0 % Down) – 2025</h2>
     <a class="btn" href="https://eligibility.sc.egov.usda.gov/" target="_blank" rel="noopener">Open Official USDA Map →</a>
-    <form action="https://eligibility.sc.egov.usda.gov/eligibility/welcomeAction.do" method="get" target="_blank" style="margin-top:1.2rem">
-      <label>Check any U.S. address instantly:
-        <input type="text" name="address" placeholder="123 Main St, Anytown, ST" style="width:100%;max-width:420px">
-      </label>
-      <button class="btn" type="submit">Check Eligibility</button>
+    <form action="https://eligibility.sc.egov.usda.gov/eligibility/welcomeAction.do" method="get" target="_blank" class="mt-4">
+      <label class="block text-sm font-medium mb-1">Check any U.S. address instantly:</label>
+      <input type="text" name="address" placeholder="123 Main St, Anytown, ST" class="w-full max-w-xl px-3 py-2 rounded bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-300">
+      <button type="submit" class="btn mt-2">Check Eligibility</button>
     </form>
-    <figure>
-      <img src="https://i.imgur.com/J4hGv4S.png" alt="2025 USDA eligibility preview">
-      <figcaption>Preview: purple = eligible. Click the top button for the full interactive map.</figcaption>
+    <figure class="mt-6">
+      <img src="https://i.imgur.com/J4hGv4S.png" alt="2025 USDA eligibility preview" class="rounded-xl shadow-lg">
+      <figcaption class="text-xs opacity-70 mt-2">Preview: purple = eligible. Click the top button for the full interactive map.</figcaption>
     </figure>
-    <ul style="padding-left:1.2rem;margin-top:1rem">
+    <ul class="list-disc list-inside mt-4 space-y-1">
       <li><strong>0 % down payment</strong> – 100 % financing.</li>
       <li>Income limit (1-4 pers.) = <strong>$119 850</strong> for most counties in 2025.</li>
       <li>Population ≤ 35 000 and **not** in a major MSA = usually OK.</li>
       <li>Property must be <strong>modest, single-family, primary residence</strong>.</li>
     </ul>
-  </div>
+  </section>
 
   <!-- apply instantly -->
-  <div class="card" id="apply">
-    <h3>Apply Instantly – Same-Day Decision</h3>
+  <section id="apply" class="fade-up glass rounded-2xl p-6 md:p-8">
+    <h2 class="text-2xl font-bold mb-4">Apply Instantly – Same-Day Decision</h2>
     <p>Pre-qualify in 2 minutes, close in as little as 1 business day.</p>
-    <div class="apply-grid">
-      <div class="apply-block">
-        <h4>Mortgages</h4>
+    <div class="grid md:grid-cols-3 gap-4 mt-4">
+      <div class="apply-block border border-gray-700 rounded-lg p-4">
+        <h4 class="font-semibold mb-2">🏡 Mortgages</h4>
         <a class="btn" href="https://www.usbank.com/home-loans/mortgage/first-time-home-buyers/online-mortgage-application-process.html" target="_blank" rel="noopener">U.S. Bank – digital full process</a><br>
-        <a class="btn" href="https://www.rocketmortgage.com/apply" target="_blank" rel="noopener">Rocket Mortgage – 8-min pre-approval</a><br>
-        <a class="btn" href="https://www.lendingtree.com/mortgage" target="_blank" rel="noopener">LendingTree – 3 quotes in 1 form</a><br>
-        <a class="btn" href="https://www.zillow.com/mortgage-rates/" target="_blank" rel="noopener">Zillow Home Loans – instant quote</a>
+        <a class="btn mt-2" href="https://www.rocketmortgage.com/apply" target="_blank" rel="noopener">Rocket Mortgage – 8-min pre-approval</a><br>
+        <a class="btn mt-2" href="https://www.lendingtree.com/mortgage" target="_blank" rel="noopener">LendingTree – 3 quotes in 1 form</a><br>
+        <a class="btn mt-2" href="https://www.zillow.com/mortgage-rates/" target="_blank" rel="noopener">Zillow Home Loans – instant quote</a>
       </div>
-      <div class="apply-block">
-        <h4>Personal / Bridge / Reno</h4>
+      <div class="apply-block border border-gray-700 rounded-lg p-4">
+        <h4 class="font-semibold mb-2">💰 Personal / Bridge / Reno</h4>
         <a class="btn" href="https://www.bestegg.com/apply" target="_blank" rel="noopener">Best Egg – funds in 1-3 days</a><br>
-        <a class="btn" href="https://www.lendingclub.com/personal-loan" target="_blank" rel="noopener">LendingClub – soft-pull pre-check</a><br>
-        <a class="btn" href="https://www.upstart.com/personal-loans" target="_blank" rel="noopener">Upstart – 99 % same-day fund</a><br>
-        <a class="btn" href="https://www.usbank.com/loans-credit-lines/personal-loans-and-lines-of-credit/personal-loan.html" target="_blank" rel="noopener">U.S. Bank Personal – &lt; 1 min decision</a>
+        <a class="btn mt-2" href="https://www.lendingclub.com/personal-loan" target="_blank" rel="noopener">LendingClub – soft-pull pre-check</a><br>
+        <a class="btn mt-2" href="https://www.upstart.com/personal-loans" target="_blank" rel="noopener">Upstart – 99 % same-day fund</a><br>
+        <a class="btn mt-2" href="https://www.usbank.com/loans-credit-lines/personal-loans-and-lines-of-credit/personal-loan.html" target="_blank" rel="noopener">U.S. Bank Personal – &lt; 1 min decision</a>
       </div>
-      <div class="apply-block">
-        <h4>Credit Unions & Brokers</h4>
+      <div class="apply-block border border-gray-700 rounded-lg p-4">
+        <h4 class="font-semibold mb-2">🏦 Credit Unions & Brokers</h4>
         <a class="btn" href="https://www.penfed.org/mortgage" target="_blank" rel="noopener">PenFed – next-day funding</a><br>
-        <a class="btn" href="https://www.cnbc.com/select/6-personal-loans-thatll-get-you-funded-in-as-little-as-1-business-day/" target="_blank" rel="noopener">CNBC fast-fund list – compare 9 lenders</a><br>
-        <a class="btn" href="https://www.nerdwallet.com/mortgages/mortgage-rates" target="_blank" rel="noopener">NerdWallet – 3-rate comparison</a>
+        <a class="btn mt-2" href="https://www.cnbc.com/select/6-personal-loans-thatll-get-you-funded-in-as-little-as-1-business-day/" target="_blank" rel="noopener">CNBC fast-fund list – compare 9 lenders</a><br>
+        <a class="btn mt-2" href="https://www.nerdwallet.com/mortgages/mortgage-rates" target="_blank" rel="noopener">NerdWallet – 3-rate comparison</a>
       </div>
     </div>
-    <ul style="margin-top:1.5rem;padding-left:1.2rem">
+    <ul class="list-disc list-inside mt-4 space-y-1">
       <li>Pre-qualification uses a <strong>soft pull</strong> – no impact on credit.</li>
       <li>Uploaded docs & e-signature = <strong>same-day approval</strong> with most lenders.</li>
       <li>Funds available <strong>within 1-3 business days</strong> after clear-to-close.</li>
     </ul>
-  </div>
-
-  <!-- chat -->
-  <div class="card">
-    <h3>Need Help? Chat With Us Live</h3>
-    <p>Answers in under 60 seconds – available 24/7.</p>
-    <!-- Tidio live-chat (free plan) -->
-    <script src="//code.tidio.co/ohaypb2dksrvgnsir5tlqjj8noxc3vqx.js" async></script>
-    <div style="height:400px;border:1px solid rgba(0,0,0,.1);border-radius:var(--radius);overflow:hidden">
-      <!-- chat widget auto-appears here -->
-    </div>
-    <p style="font-size:.75rem;opacity:.7">Powered by Tidio – free forever.</p>
-  </div>
+  </section>
 
   <!-- footer -->
-  <div class="card" style="text-align:center;font-size:.85rem;opacity:.7">
+  <footer class="text-center text-sm opacity-60 py-6">
     © 2025 Home Best Rates – rates update every Thursday · NMLS #1234567
-  </div>
+  </footer>
 </main>
 
 <!-- ---------- scripts ---------- -->
@@ -220,6 +200,10 @@ function show(){
   saved.innerHTML=arr.map((x,i)=>`#${i+1} $${x.price} ${x.down}% @${x.rate}% – ${x.date}`).join('<br>');
 }
 show();
+
+/* ---------- scroll fade ---------- */
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})}, {threshold:.15});
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 </script>
 </body>
 </html>
