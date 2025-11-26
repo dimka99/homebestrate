@@ -665,6 +665,192 @@
             color: #856404;
         }
         
+        /* Live Chat Bot Styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .chatbot-button {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .chatbot-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .chatbot-window {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .chatbot-window.active {
+            display: flex;
+            animation: fadeInUp 0.3s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .chat-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .chat-header-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .chat-avatar {
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .chat-title {
+            font-weight: 600;
+        }
+        
+        .chat-status {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        .close-chat {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 0.75rem 1rem;
+            border-radius: 18px;
+            line-height: 1.4;
+            position: relative;
+        }
+        
+        .bot-message {
+            background: #f1f5f9;
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .user-message {
+            background: var(--accent);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .quick-reply {
+            background: white;
+            border: 1px solid var(--light-gray);
+            border-radius: 15px;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .quick-reply:hover {
+            background: var(--light);
+        }
+        
+        .chat-input {
+            padding: 1rem;
+            border-top: 1px solid var(--light-gray);
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 25px;
+            outline: none;
+        }
+        
+        .send-button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .send-button:hover {
+            background: var(--primary);
+        }
+        
         /* Responsive Styles */
         @media (max-width: 768px) {
             .header-content {
@@ -702,6 +888,18 @@
             
             .logo-text h1 {
                 font-size: 1.5rem;
+            }
+            
+            .chatbot-window {
+                width: 300px;
+                height: 450px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .chatbot-window {
+                width: calc(100vw - 40px);
+                right: 20px;
             }
         }
     </style>
@@ -1204,6 +1402,45 @@
         </div>
     </footer>
 
+    <!-- Live Chat Bot -->
+    <div class="chatbot-container">
+        <button class="chatbot-button" id="chatbotToggle">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="chat-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div>
+                        <div class="chat-title">Mortgage Assistant</div>
+                        <div class="chat-status">Online • Ready to help</div>
+                    </div>
+                </div>
+                <button class="close-chat" id="closeChat">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    Hello! I'm your Mortgage Assistant. How can I help you with your home loan questions today?
+                    <div class="quick-replies">
+                        <div class="quick-reply" onclick="sendQuickReply('Current mortgage rates')">Current rates</div>
+                        <div class="quick-reply" onclick="sendQuickReply('Calculate my payment')">Payment calculator</div>
+                        <div class="quick-reply" onclick="sendQuickReply('First-time home buyer')">First-time buyer</div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="Type your message...">
+                <button class="send-button" id="sendMessage">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Sample rate data
         const rateData = [
@@ -1263,6 +1500,91 @@
                 apply_url: "https://chase.com/mortgage/apply?partner=mortgageratehub"
             }
         ];
+
+        // Chatbot functionality
+        const chatbotToggle = document.getElementById('chatbotToggle');
+        const chatbotWindow = document.getElementById('chatbotWindow');
+        const closeChat = document.getElementById('closeChat');
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const sendMessage = document.getElementById('sendMessage');
+
+        // Toggle chatbot window
+        chatbotToggle.addEventListener('click', () => {
+            chatbotWindow.classList.toggle('active');
+        });
+
+        // Close chatbot window
+        closeChat.addEventListener('click', () => {
+            chatbotWindow.classList.remove('active');
+        });
+
+        // Send message function
+        function sendMessageToChat() {
+            const message = chatInput.value.trim();
+            if (message) {
+                // Add user message
+                addMessage(message, 'user');
+                chatInput.value = '';
+                
+                // Simulate bot response after a short delay
+                setTimeout(() => {
+                    const botResponse = generateBotResponse(message);
+                    addMessage(botResponse, 'bot');
+                }, 1000);
+            }
+        }
+
+        // Send message on button click
+        sendMessage.addEventListener('click', sendMessageToChat);
+
+        // Send message on Enter key
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessageToChat();
+            }
+        });
+
+        // Add message to chat
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', `${sender}-message`);
+            messageDiv.textContent = text;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Quick reply function
+        function sendQuickReply(text) {
+            addMessage(text, 'user');
+            
+            // Simulate bot response after a short delay
+            setTimeout(() => {
+                const botResponse = generateBotResponse(text);
+                addMessage(botResponse, 'bot');
+            }, 1000);
+        }
+
+        // Generate bot responses
+        function generateBotResponse(userMessage) {
+            const lowerMessage = userMessage.toLowerCase();
+            
+            if (lowerMessage.includes('rate') || lowerMessage.includes('apr')) {
+                return "Current average mortgage rates are around 6.25% for 30-year fixed loans and 5.75% for 15-year fixed loans. Rates vary based on credit score, loan amount, and location. Would you like to see our current rate table?";
+            } else if (lowerMessage.includes('calculator') || lowerMessage.includes('payment')) {
+                return "I can help you estimate your mortgage payment! Our calculator considers loan amount, interest rate, term, taxes, and insurance. You can find our detailed mortgage calculator in the main section of our website.";
+            } else if (lowerMessage.includes('first-time') || lowerMessage.includes('first time')) {
+                return "First-time home buyers have several options! FHA loans require as little as 3.5% down, and there are down payment assistance programs available. Your credit score should ideally be 620+ for conventional loans or 580+ for FHA loans.";
+            } else if (lowerMessage.includes('credit') || lowerMessage.includes('score')) {
+                return "For conventional loans, you'll typically need a credit score of 620 or higher. FHA loans may accept scores as low as 580. Higher scores (740+) qualify for the best interest rates. Would you like tips on improving your credit score?";
+            } else if (lowerMessage.includes('down payment')) {
+                return "Down payment requirements vary: Conventional loans typically require 3-20%, FHA loans require 3.5%, and VA loans offer 0% down for eligible borrowers. Putting down 20% helps you avoid private mortgage insurance (PMI).";
+            } else if (lowerMessage.includes('refinance')) {
+                return "Refinancing can help lower your monthly payment or shorten your loan term. Generally, it makes sense if you can reduce your interest rate by 0.5-1% or need to access home equity. Our refinance calculator can help you determine potential savings.";
+            } else {
+                return "I'm here to help with mortgage-related questions! You can ask me about current rates, payment calculations, credit requirements, down payments, or refinancing options. How can I assist you today?";
+            }
+        }
 
         // Initialize rates table
         document.addEventListener('DOMContentLoaded', function() {
