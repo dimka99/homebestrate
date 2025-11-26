@@ -1,0 +1,96 @@
+MortgageRateHub-Android-App/
+├── app/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/
+│   │   │   │   └── com/
+│   │   │   │       └── mortgageratehub/
+│   │   │   │           └── app/
+│   │   │   │               ├── MortgageRateHubApp.java
+│   │   │   │               ├── MainActivity.java
+│   │   │   │               ├── WebViewActivity.java
+│   │   │   │               ├── RateDetailActivity.java
+│   │   │   │               ├── CalculatorActivity.java
+│   │   │   │               ├── workers/
+│   │   │   │               │   └── RateUpdateWorker.java
+│   │   │   │               ├── models/
+│   │   │   │               │   ├── MortgageRate.java
+│   │   │   │               │   └── Lender.java
+│   │   │   │               └── ui/
+│   │   │   │                   ├── home/
+│   │   │   │                   │   ├── HomeFragment.java
+│   │   │   │                   │   └── HomeViewModel.java
+│   │   │   │                   ├── rates/
+│   │   │   │                   │   ├── RatesFragment.java
+│   │   │   │                   │   └── RatesViewModel.java
+│   │   │   │                   ├── calculator/
+│   │   │   │                   │   ├── CalculatorFragment.java
+│   │   │   │                   │   └── CalculatorViewModel.java
+│   │   │   │                   ├── lenders/
+│   │   │   │                   │   ├── LendersFragment.java
+│   │   │   │                   │   └── LendersViewModel.java
+│   │   │   │                   └── resources/
+│   │   │   │                       ├── ResourcesFragment.java
+│   │   │   │                       └── ResourcesViewModel.java
+│   │   │   ├── res/
+│   │   │   │   ├── layout/
+│   │   │   │   │   ├── activity_main.xml
+│   │   │   │   │   ├── activity_webview.xml
+│   │   │   │   │   ├── activity_rate_detail.xml
+│   │   │   │   │   ├── activity_calculator.xml
+│   │   │   │   │   ├── fragment_home.xml
+│   │   │   │   │   ├── fragment_rates.xml
+│   │   │   │   │   ├── fragment_calculator.xml
+│   │   │   │   │   ├── fragment_lenders.xml
+│   │   │   │   │   └── fragment_resources.xml
+│   │   │   │   ├── drawable/
+│   │   │   │   │   ├── ic_home.xml
+│   │   │   │   │   ├── ic_rates.xml
+│   │   │   │   │   ├── ic_calculator.xml
+│   │   │   │   │   ├── ic_lenders.xml
+│   │   │   │   │   ├── ic_resources.xml
+│   │   │   │   │   ├── ic_launcher_foreground.xml
+│   │   │   │   │   ├── gradient_background.xml
+│   │   │   │   │   └── ic_check.xml
+│   │   │   │   ├── mipmap-hdpi/
+│   │   │   │   │   ├── ic_launcher.png
+│   │   │   │   │   └── ic_launcher_round.png
+│   │   │   │   ├── mipmap-mdpi/
+│   │   │   │   │   ├── ic_launcher.png
+│   │   │   │   │   └── ic_launcher_round.png
+│   │   │   │   ├── mipmap-xhdpi/
+│   │   │   │   │   ├── ic_launcher.png
+│   │   │   │   │   └── ic_launcher_round.png
+│   │   │   │   ├── mipmap-xxhdpi/
+│   │   │   │   │   ├── ic_launcher.png
+│   │   │   │   │   └── ic_launcher_round.png
+│   │   │   │   ├── mipmap-xxxhdpi/
+│   │   │   │   │   ├── ic_launcher.png
+│   │   │   │   │   └── ic_launcher_round.png
+│   │   │   │   ├── values/
+│   │   │   │   │   ├── strings.xml
+│   │   │   │   │   ├── colors.xml
+│   │   │   │   │   ├── styles.xml
+│   │   │   │   │   └── dimens.xml
+│   │   │   │   ├── navigation/
+│   │   │   │   │   └── mobile_navigation.xml
+│   │   │   │   ├── menu/
+│   │   │   │   │   └── bottom_nav_menu.xml
+│   │   │   │   └── xml/
+│   │   │   │       ├── data_extraction_rules.xml
+│   │   │   │       └── backup_rules.xml
+│   │   │   ├── assets/
+│   │   │   │   └── privacy_policy.html
+│   │   │   └── AndroidManifest.xml
+│   │   └── build.gradle
+│   ├── proguard-rules.pro
+│   └── build.gradle
+├── gradle/
+│   └── wrapper/
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+├── gradlew
+├── gradlew.bat
+├── build.gradle
+├── settings.gradle
+└── README.md

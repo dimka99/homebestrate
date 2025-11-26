@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.mortgageratehub.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_rates"
+        android:name="com.mortgageratehub.ui.rates.RatesFragment"
+        android:label="@string/title_rates"
+        tools:layout="@layout/fragment_rates" />
+
+    <fragment
+        android:id="@+id/navigation_calculator"
+        android:name="com.mortgageratehub.ui.calculator.CalculatorFragment"
+        android:label="@string/title_calculator"
+        tools:layout="@layout/fragment_calculator" />
+
+    <fragment
+        android:id="@+id/navigation_lenders"
+        android:name="com.mortgageratehub.ui.lenders.LendersFragment"
+        android:label="@string/title_lenders"
+        tools:layout="@layout/fragment_lenders" />
+
+    <fragment
+        android:id="@+id/navigation_resources"
+        android:name="com.mortgageratehub.ui.resources.ResourcesFragment"
+        android:label="@string/title_resources"
+        tools:layout="@layout/fragment_resources" />
+
+</navigation>

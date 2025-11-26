@@ -1,0 +1,1 @@
+keytool -genkey -v -keystore mortgage_rate_hub.jks -keyalg RSA -keysize 2048 -validity 10000 -alias mortgage_rate_hub

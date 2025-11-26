@@ -1,0 +1,18 @@
+# Add project specific ProGuard rules here.
+-keep class com.mortgageratehub.app.** { *; }
+-keep class com.github.mikephil.charting.** { *; }
+-keep class com.google.android.gms.ads.** { *; }
+
+# Retrofit
+-keepattributes Signature
+-keepattributes Annotation
+-keep class com.squareup.retrofit2.** { *; }
+-keepclasseswithmembers class * {
+    @com.squareup.retrofit2.http.* <methods>;
+}
+
+# GSON
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class sun.misc.Unsafe { *; }
+-keep class com.google.gson.examples.android.model.** { *; }

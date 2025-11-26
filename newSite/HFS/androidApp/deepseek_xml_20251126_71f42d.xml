@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Mortgage Rate Hub</string>
+    <string name="title_home">Home</string>
+    <string name="title_rates">Current Rates</string>
+    <string name="title_calculator">Calculator</string>
+    <string name="title_lenders">Lenders</string>
+    <string name="title_resources">Resources</string>
+</resources>

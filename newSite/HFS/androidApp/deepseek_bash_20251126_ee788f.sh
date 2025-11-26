@@ -1,0 +1,1 @@
+apksigner verify app/build/outputs/apk/release/app-release.apk
