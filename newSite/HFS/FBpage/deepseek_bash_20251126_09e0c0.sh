@@ -1,0 +1,1 @@
+zip -r MortgageRateHub-Android-App.zip MortgageRateHub-Android-App/

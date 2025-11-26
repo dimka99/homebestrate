@@ -1,0 +1,4 @@
+Size: 180x180 pixels
+Background: #2c5aa0 (blue)
+Logo: White simplified house icon
+Text: None (keep it clean)
